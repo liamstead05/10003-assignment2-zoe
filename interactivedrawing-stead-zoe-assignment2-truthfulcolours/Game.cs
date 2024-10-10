@@ -1,4 +1,5 @@
 ﻿// Include code libraries you need below (use the namespace).
+using Microsoft.VisualBasic;
 using System;
 using System.Numerics;
 
@@ -17,6 +18,8 @@ namespace Game10003
         Color triangle = Random.Color();
         Color hexagon = Random.Color();
         Color box = new Color(190, 190, 190);
+        Color[] boxz = [Color.Black, Color.DarkGray, Color.Gray, Color.White];
+        int boxNum = 0;
         bool mouseClick;
 
         /// <summary>
@@ -70,12 +73,22 @@ namespace Game10003
             }
             Draw.FillColor = box;
             Draw.LineColor = box;
+            Draw.Rectangle(190, 0, 20, 400);
+            Draw.Rectangle(0, 190, 400, 20);
             Draw.Rectangle(0, 0, 400, 20);
             Draw.Rectangle(0, 0, 20, 400);
             Draw.Rectangle(0, 380, 400, 20);
             Draw.Rectangle(380, 0, 20, 400);
-            Draw.Rectangle(190, 0, 20, 400);
-            Draw.Rectangle(0, 190, 400, 20);
+            if (mouseClick==true)
+            {
+                boxNum++;
+                box = boxz[boxNum];
+                if (boxNum == 3)
+                {
+                    boxNum = 0;
+                }
+            }
+
         }
     }
 }
